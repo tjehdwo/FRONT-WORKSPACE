@@ -6,41 +6,92 @@
 <link rel="stylesheet" type="text/css" href="./css/homeinfomation-styles.css">  
 </head>
 <body>
-    <h2>개발하는 사람 블로그 메인</h2>
-    <p>개발하는 사람 블로그</p>
+    <h2 style="text-align :center;">개발하는 사람 블로그 메인</h2>
+    <p style="text-align :center;">개발하는 사람 블로그</p>
     <header>
-            <h2>자신있으면 드루와</h2>
-        <img src="다운로드.jpg" alt="이미지2" style="width : 350px; height: 350px;">
+            <h2>배너</h2>
+        <img src="C:\Users\user1\frontend-workspace\background.jpg" style="width:590px;height:300px;">
     </header>
     <section>
+   
         <nav>
             <ul>
+                <div style="background:rgb(233, 233, 79);">
                 <li>블로그 소개</li>
-                <br><br><br>
+                <br><br>
+                
+                <br><br>
+                     
                 <li>전체 글보기</li>
-                <br><br><br>
+                <br><br>
+                
+                <br><br>
                 <li>전체 댓글보기</li>
+                <br><br><br><br>
+                </div>
             </ul>
         </nav>
     
         <article>
-         <h1>글쓰기</h1>
-         <input type="text" style="width : 1000px; height:250px;"><br>
-         <button class="bt">글 작성</button>
+            
+         <div style="background:linear-gradient(white,gray);width:100px;text-align: center;">
+            <h1>글쓰기</h1>
+        </div>
+         <input type="text" style="width : 1000px; height:100px;"><br>
+      
+        <button class="bt" onclick="clickbutton()">글 작성</button>
             
         </article>
         <article>
-            <h1>댓글 작성하기</h1>
-            <p><br>
-            </p>
+            <div style="background:linear-gradient(white,gray);width:100px;text-align: center;">
+            <h1>댓글 작성</h1>
+            </div>
+           <div class="comment">
+                <input id="commentInput" placeholder="댓글작성하기">
+                <button onclick="addComment()">작성완료</button>
+                <div id="comments" style="background:white;border:1px solid;margin-top:10px;">
+
+                </div>
+           </div>
         </article>
+       
       
     </section>
     <footer>
         <p>블로그 주소 : https://sdjdevelopment.tistory.com/ | 개발하는 사람 | 전화 번호:010-6269-6272 </p>
     </footer>
-</body>    
+</body>   
+<foot></foot> 
+<script>
+    function clickbutton(){
+        alert("글이 작성되었습니다.");
+    }
+</script>
+<script>
+    function addComment(){
+        const commentInput = document.getElementById("commentInput");
+        const commentText = commentInput.value;
 
+        if(commentText.trim()===""){
+            alert("댓글을 작성해주세요.");
+            return;
+        }
+        const commentsBox = document.getElementById("comments");
+
+        const commentDIV = document.createElement("div");
+        commentDIV.className ="comment";
+        commentDIV.textContent= commentText;
+
+        commentsBox.appendChild(commentDIV);
+        commentInput.value="";
+
+    }
+    
+
+
+
+
+</script>
 
 
 

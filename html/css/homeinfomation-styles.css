@@ -2,53 +2,63 @@
     box-sizing: border-box;
 }
 
+li {
+    padding : 10px;
+    text-align: center;
+    background:linear-gradient(white,gray);
+    width:110px;
+    font-size : 12px;
+}
+
 .bt {
     margin-top : 10px;
 }
 
 button{
-    background-color: white;
-    color : black;
+    background-color: rgb(71, 80, 131);
+    color : white;
     padding : 10px 10px;
     cursor : pointer;
-    /*그림자 추가*/
     box-shadow : 2px 2px 5px rgba(0,0,0, 0.3);
-    /*마우스 가져갈 시 색상 반짝이는 효과 추가*/
     transition: background-color 0.3s,box-shadow 0.3s;
      }
-    /*마우스 호버 시 스타일 변경*/
-    button:hover {
-        background-color: skyblue;
-        box-shadow : 20px 20px 5px rgb(20 26 239/50%);
+    
+     button:hover {
+        background-color: rgb(24, 26, 153);
+        box-shadow : 10px 10px 5px rgba(1, 1, 2, 0.5);
     }
 
 
 header {
-    background-color: #6b5597b0;
-    padding : 30px;
+    
+    background:linear-gradient(to right,skyblue 30%,gray);
+    /*background-color: #6b5597b0;*/
+    padding : 0px;
     text-align : center;
-    font-size : 35px;
-    color : white;
+    font-size : 25px;
+    color : black;
 }
 
 nav {
+   
     float : left;
     width : 30%;
-    height : 1200px;
-    background : #f5a8ef;
+    height : 800px;
+    background:linear-gradient(skyblue,gray);
     padding : 20px;
 }
 
 nav ul{
+    
     list-style-type : none;
     padding:0;
 }
 
 article {
+    background:rgb(233, 233, 79);
     float : left;
     padding : 20px;
     width : 70%;
-    background-color : #f1f1f1;
     height : 400px;
 
 }
@@ -59,7 +69,9 @@ section::after {
 }
 
 footer {
-    background-color: #cfff33;
+   
+    background: white;/*시작할 색상 정하기*/
+   /* background-color: #cfff33;*/
     padding : 10px;
     text-align : center;
     color : black;
