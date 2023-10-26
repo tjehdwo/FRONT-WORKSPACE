@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+}
+
+.bt {
+    margin-top : 10px;
+}
+
+button{
+    background-color: white;
+    color : black;
+    padding : 10px 10px;
+    cursor : pointer;
+    /*그림자 추가*/
+    box-shadow : 2px 2px 5px rgba(0,0,0, 0.3);
+    /*마우스 가져갈 시 색상 반짝이는 효과 추가*/
+    transition: background-color 0.3s,box-shadow 0.3s;
+     }
+    /*마우스 호버 시 스타일 변경*/
+    button:hover {
+        background-color: skyblue;
+        box-shadow : 20px 20px 5px rgb(20 26 239/50%);
+    }
+
+
+header {
+    background-color: #6b5597b0;
+    padding : 30px;
+    text-align : center;
+    font-size : 35px;
+    color : white;
+}
+
+nav {
+    float : left;
+    width : 30%;
+    height : 1200px;
+    background : #f5a8ef;
+    padding : 20px;
+}
+
+nav ul{
+    list-style-type : none;
+    padding:0;
+}
+
+article {
+    float : left;
+    padding : 20px;
+    width : 70%;
+    background-color : #f1f1f1;
+    height : 400px;
+
+}
+section::after {
+    content : "";
+    display : table;
+    clear : both;
+}
+
+footer {
+    background-color: #cfff33;
+    padding : 10px;
+    text-align : center;
+    color : black;
+}
+@media (max-width:600px){
+    nav,article{
+        width:100%;
+        height: auto;
+    }
+}
