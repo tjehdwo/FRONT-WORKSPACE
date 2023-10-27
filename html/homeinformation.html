@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>우리 회사 홈페이지</title>
+        <title>서동재 첫 블로그</title>
         <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/homeinfomation-styles.css">  
 </head>
@@ -9,87 +9,158 @@
     <h2 style="text-align :center;">개발하는 사람 블로그 메인</h2>
     <p style="text-align :center;">개발하는 사람 블로그</p>
     <header>
-            <h2>배너</h2>
-        <img src="C:\Users\user1\frontend-workspace\background.jpg" style="width:590px;height:300px;">
+            <h2 style="color:white;height:50px;">B L O G</h2>
+        
     </header>
     <section>
    
         <nav>
             <ul>
-                <div style="background:rgb(233, 233, 79);">
+                
                 <li>블로그 소개</li>
-                <br><br>
-                
-                <br><br>
-                     
+                <img src="C:\Users\user1\frontend-workspace\뭐하냥.jpg" style="width:100px;height:100px;margin-top: 10px;">
+                <p>서동재의 첫 블로그 홈페이지입니다.</p>
                 <li>전체 글보기</li>
-                <br><br>
-                
-                <br><br>
+                <p><a href="#">전체 글을 보려면 여기로 이동하세요.</a></p>
                 <li>전체 댓글보기</li>
-                <br><br><br><br>
-                </div>
+                <p><a href="#">전체 댓글을 보려면 여기로 이동하세요.</a></p>
             </ul>
         </nav>
     
         <article>
-            
-         <div style="background:linear-gradient(white,gray);width:100px;text-align: center;">
-            <h1>글쓰기</h1>
-        </div>
-         <input type="text" style="width : 1000px; height:100px;"><br>
-      
-        <button class="bt" onclick="clickbutton()">글 작성</button>
-            
-        </article>
-        <article>
-            <div style="background:linear-gradient(white,gray);width:100px;text-align: center;">
-            <h1>댓글 작성</h1>
-            </div>
-           <div class="comment">
-                <input id="commentInput" placeholder="댓글작성하기">
-                <button onclick="addComment()">작성완료</button>
-                <div id="comments" style="background:white;border:1px solid;margin-top:10px;">
+            <div id="container">
+             <h1 style="color : gray">게시글 작성</h1>
+                 <div id="posts">
+                <!--게시물 추가 공간-->
+                 </div>
+             <h3>새 게시물 작성</h3>
 
-                </div>
-           </div>
+             <form id="postForm">
+                <label for="title">제목 : </label>
+                <input type="text" id="title" name="title" required><br><br>
+                <label for="content">내용 : </label>
+                <textarea id="content" name="content" required></textarea>
+                <button type="submit" id="inputButton" disabled>게시하기</button>
+             </form>
+            </div>
+         
+      
+        
+            
         </article>
+        
        
       
     </section>
     <footer>
-        <p>블로그 주소 : https://sdjdevelopment.tistory.com/ | 개발하는 사람 | 전화 번호:010-6269-6272 </p>
+        <p> <a href="https://sdjdevelopment.tistory.com">tstory블로그 바로가기</a>| 개발하는 사람 | 전화 번호:010-6269-6272 </p>
     </footer>
 </body>   
 <foot></foot> 
 <script>
-    function clickbutton(){
-        alert("글이 작성되었습니다.");
-    }
-</script>
-<script>
-    function addComment(){
-        const commentInput = document.getElementById("commentInput");
-        const commentText = commentInput.value;
+    const postForm = document.getElementById("postForm");
+    const posts = document.getElementById("posts");
+    const postArray = []; //게시물을 저장하는 배열
 
-        if(commentText.trim()===""){
-            alert("댓글을 작성해주세요.");
-            return;
+    postForm.addEventListener("submit",function(event){
+        event.preventDefault();
+        const title = postForm.title.value;
+        const content = postForm.content.value;
+        const date = new Date();
+        const post = {
+            title,
+            content,
+            date,
+            comments:[],
+        };
+        postArray.push(post); // 게시물을 배열에 추가합니다.
+
+        //새 게시물을 담아줄 div 생성
+        const postDiv = document.createElement("div");
+        postDiv.classList.add("post");
+        postDiv.innerHTML = `
+        <h3>${title}</h3>
+        <p>${content}</p>
+        <p>게시일 :${date.toLocaleString()}</p>
+        `;
+        
+        //삭제버튼 생성
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
+        deleteButton.innerHTML = "X";
+        deleteButton.addEventListener("click",()=>{
+            postArray.splice(postArray.indexOf(post),1);
+            posts.removeChild(postDiv);
+        });
+        
+        //댓글 폼 생성
+        const commentForm = document.createElement("form");
+        commentForm.innerHTML = `
+            <input type="text" name="comment" placeholder="댓글추가하기">
+            <button type="submit">게시</button>
+        `;
+        
+        commentForm.addEventListener("submit",function(event){
+           event.preventDefault();
+           const commentText = commentForm.comment.value;
+           const comment = {
+                text : commentText,
+                date : new Date(),
+           };
+
+           post.comments.push(comment);
+           const commentDiv = document.createElement("Div");
+           commentDiv.classList.add("comment");
+           commentDiv.innerHTML = `
+                <p>${commentText}</p>
+                <p>게시일 : ${comment.date.toLocaleString()}</p>
+           `;
+           //댓글 입력 초기화
+           commentForm.comment.value = "";
+           postDiv.appendChild(commentDiv);
+
+        });
+
+        postDiv.appendChild(deleteButton);
+        postDiv.appendChild(commentForm);
+       
+       
+       
+        //게시글 목록 추가
+        posts.appendChild(postDiv);
+        
+        //게시글 입력 초기화
+        postForm.title.value = "";
+        postForm.contetn.value ="";
+
+
+
+
+
+
+
+
+    })
+    
+    const titleInput = document.getElementById('title');
+    const contentInput = document.getElementById('content');
+
+    const inputButton = document.getElementById('inputButton');
+
+    function inputs(){
+        if(titleInput.value.trim() !== ''  && contentInput.value.trim() !==''){
+
+            inputButton.removeAttribute('disabled');
+           
+        }else{
+            
+            inputButton.setAttribute('disabled',true);
         }
-        const commentsBox = document.getElementById("comments");
-
-        const commentDIV = document.createElement("div");
-        commentDIV.className ="comment";
-        commentDIV.textContent= commentText;
-
-        commentsBox.appendChild(commentDIV);
-        commentInput.value="";
-
     }
     
 
-
-
+    titleInput.addEventListener('input',inputs);
+    contentInput.addEventListener('input',inputs);
 
 </script>
 

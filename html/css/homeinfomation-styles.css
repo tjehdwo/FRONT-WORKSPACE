@@ -14,17 +14,23 @@ li {
     margin-top : 10px;
 }
 
+
+
 button{
-    background-color: rgb(71, 80, 131);
-    color : white;
+    border:none;
+    border-radius: 5px;
+    background-color: white;
+    color : balck;
     padding : 10px 10px;
+    font-size :10px;
     cursor : pointer;
     box-shadow : 2px 2px 5px rgba(0,0,0, 0.3);
     transition: background-color 0.3s,box-shadow 0.3s;
      }
     
      button:hover {
-        background-color: rgb(24, 26, 153);
+        background-color: rgb(41, 39, 39);
+        color:white;
         box-shadow : 10px 10px 5px rgba(1, 1, 2, 0.5);
     }
 
@@ -44,8 +50,8 @@ nav {
     float : left;
     width : 30%;
     height : 800px;
-    background:linear-gradient(skyblue,gray);
-    padding : 20px;
+    background:rgb(237, 226, 226);
+    padding : 5px;
 }
 
 nav ul{
@@ -55,11 +61,11 @@ nav ul{
 }
 
 article {
-    background:rgb(233, 233, 79);
+    background:linear-gradient(to left,white,rgb(237, 226, 226));
     float : left;
-    padding : 20px;
+    padding : 15px;
     width : 70%;
-    height : 400px;
+    height : 100%;
 
 }
 section::after {
