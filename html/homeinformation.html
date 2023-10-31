@@ -20,8 +20,10 @@
                 <li>블로그 소개</li>
                 <img src="C:\Users\user1\frontend-workspace\뭐하냥.jpg" style="width:100px;height:100px;margin-top: 10px;">
                 <p>서동재의 첫 블로그 홈페이지입니다.</p>
-                <li>전체 글보기</li>
-                <p><a href="#">전체 글을 보려면 여기로 이동하세요.</a></p>
+                <li>음악재생</li>
+                    <audio id="myAudio" controls autoplay>
+                        <source src="html\mp3\태연 (TAEYEON) - 그대라는 시  가사  호텔델루나 OST (Hotel DelLuna OST).mp3" type="audio/mpeg">
+                    </audio>
                 <li>전체 댓글보기</li>
                 <p><a href="#">전체 댓글을 보려면 여기로 이동하세요.</a></p>
             </ul>
@@ -47,18 +49,33 @@
         <article>
             <div>
                 <h1 style="color : gray">강아지 사진 모음</h1>
-                <div>
-                    <button id="prevPage">이전</button>
-                </div>
+                
                 <div class="img-container">
                     <!--이미지를 추가하는 공간-->
                 </div>
                 <div>
+                    <button id="prevPage">이전</button>
                     <button id="nextPage">다음</button>
                 </div>
             </div>
         </article>
-        
+        <article>
+      
+        </article>
+        <article>
+            <div>
+                <h1 style="color : gray">게시물 페이지네이션</h1>
+                <button id="createPostButton">게시글 작성</button>
+                <ul id="blogPostList"></ul>
+                <div>
+                    <h2 id="currentPage">페이지 1</h2>
+                    <button id="prevPage">이전</button>
+                    <button id="nextPage">다음</button>
+                </div>
+            
+            
+            </div>
+        </article>
        
       
     </section>
@@ -67,171 +84,8 @@
     </footer>
 </body>   
 <foot></foot> 
-<script>
-    const postForm = document.getElementById("postForm");
-    const posts = document.getElementById("posts");
-    const postArray = []; //게시물을 저장하는 배열
+<script src="./js/app.js">
 
-    postForm.addEventListener("submit",function(event){
-        event.preventDefault();
-        const title = postForm.title.value;
-        const content = postForm.content.value;
-        const date = new Date();
-        const post = {
-            title,
-            content,
-            date,
-            comments:[],
-        };
-        postArray.push(post); // 게시물을 배열에 추가합니다.
-
-        //새 게시물을 담아줄 div 생성
-        const postDiv = document.createElement("div");
-        postDiv.classList.add("post");
-        postDiv.innerHTML = `
-        <h3>${title}</h3>
-        <p>${content}</p>
-        <p>게시일 :${date.toLocaleString()}</p>
-        `;
-        
-        //삭제버튼 생성
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete-button");
-        deleteButton.innerHTML = "X";
-        deleteButton.addEventListener("click",()=>{
-            postArray.splice(postArray.indexOf(post),1);
-            posts.removeChild(postDiv);
-        });
-        
-        //댓글 폼 생성
-        const commentForm = document.createElement("form");
-        commentForm.innerHTML = `
-            <input type="text" name="comment" placeholder="댓글추가하기">
-            <button type="submit">게시</button>
-        `;
-        
-        commentForm.addEventListener("submit",function(event){
-           event.preventDefault();
-           const commentText = commentForm.comment.value;
-           const comment = {
-                text : commentText,
-                date : new Date(),
-           };
-
-           post.comments.push(comment);
-           const commentDiv = document.createElement("Div");
-           commentDiv.classList.add("comment");
-           commentDiv.innerHTML = `
-                <p>${commentText}</p>
-                <p>게시일 : ${comment.date.toLocaleString()}</p>
-           `;
-           //댓글 입력 초기화
-           commentForm.comment.value = "";
-           postDiv.appendChild(commentDiv);
-
-        });
-
-        postDiv.appendChild(deleteButton);
-        postDiv.appendChild(commentForm);
-       
-       
-       
-        //게시글 목록 추가
-        posts.appendChild(postDiv);
-        
-        //게시글 입력 초기화
-        postForm.title.value = "";
-        postForm.contetn.value ="";
-
-
-
-
-
-
-
-
-    })
-    
-    const titleInput = document.getElementById('title');
-    const contentInput = document.getElementById('content');
-
-    const inputButton = document.getElementById('inputButton');
-
-    function inputs(){
-        if(titleInput.value.trim() !== ''  && contentInput.value.trim() !==''){
-
-            inputButton.removeAttribute('disabled');
-           
-        }else{
-            
-            inputButton.setAttribute('disabled',true);
-        }
-    }
-    
-
-    titleInput.addEventListener('input',inputs);
-    contentInput.addEventListener('input',inputs);
-
-    const images = [
-        './img/dog.jpg',
-        './img/dog2.jpg',
-        './img/dog3.jpg',
-        './img/dog4.jpg',
-        './img/dog5.jpg',
-        './img/dog6.jpg',
-        './img/dog7.jpg',
-        './img/dog8.jpg',
-        './img/dog9.jpg',
-        './img/dog10.jpg',
-    ];
-
-    const imagesPerpage = 2;
-    let currentPage = 0;
-
-    const imageContainer = document.querySelector('.img-container');
-    const prevButton = document.getElementById('prevPage');
-    const nextButton = document.getElementById('nextPage');
-
-    function displayImg(page){
-        const startIndex = page * imagesPerpage;
-        const endIndex = startIndex + imagesPerpage;
-        const pageImages = images.slice(startIndex,endIndex);
-        
-        imageContainer.innerHTML = '';
-
-        pageImages.forEach(images => {
-            const imgElement = document.createElement('img');
-            imgElement.src = images;
-            imgElement.classList.add('image');
-            imageContainer.appendChild(imgElement);
-        });
-
-    }
-
-    function updateButtons(){
-        prevButton.disabled = currentPage ===0;
-
-        nextButton.disabled = (currentPage+1)* imagesPerpage >= images.length;
-    }
-
-    prevButton.addEventListener('click', () => {
-        if(currentPage >0){
-            currentPage --;
-            displayImg(currentPage);
-            updateButtons();
-        }
-    });
-
-    nextButton.addEventListener('click',() => {
-        if((currentPage +1)* imagesPerpage <images.length){
-            currentPage ++;
-            displayImg(currentPage);
-            updateButtons();
-        }
-    });
-
-    displayImg(currentPage);
-    updateButtons();
 </script>
 
 

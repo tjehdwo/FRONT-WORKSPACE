@@ -2,6 +2,29 @@
     box-sizing: border-box;
 }
 
+audio {
+    display: block;
+    margin: 0;
+    max-width: 80%;
+    border: 2px solid #8e6565;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
+audio::-webkit-media-controls-panel {
+    background-color: #fff;
+    border-radius: 8px;
+}
+audio::-webkit-media-controls-play-button {
+    background-color: #fff;
+    border: 2px solid #f08080;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+
+
 .img-container{
     display:flex;
     flex-wrap: wrap;
