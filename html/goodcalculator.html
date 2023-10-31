@@ -36,11 +36,11 @@
                 if(itemInput.value){
                     const item = itemInput.value;
                     const price = parseInt(priceInput.value);
-                    const quantity = parseInt(quantity.value);
+                    const quantity = parseInt(quantityInput.value);
                     const totalPrice = price * quantity;
 
                     const listItem = document.createElement('li');
-                    listItem.textContent= `
+                    listItem.textContent= `"
                     ${item} (가격:${price}원) x ${quantity}: ${totalPrice}원`; //$ 값의 value 값을 가지고 올때 사용
                     total += totalPrice;
                     itemList.appendChild(listItem);
