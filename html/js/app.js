@@ -168,4 +168,74 @@ const postForm = document.getElementById("postForm");
     audio.autoplay = true;
     
 
+    document.getElementById("uploadButton").addEventListener("click",function(){
+        var fileInput = document.getElementById("fileInput");
+        var uploadImage = document.getElementById("uploadImage");
+        var imageContainer = document.getElementById("imageContainer");
+
+        if (fileInput.files.length > 0) {
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                uploadImage.src = e.target.result;
+                imageContainer.style.display = "block";
+            }
+            reader.readAsDataURL(file);
+        }else{
+            alert("이미지 파일을 선택하세요.");
+        }
+    });
+
+
+    const blogTextList = document.getElementById("blogTextList");
+    const createTextButton = document.getElementById("createTextButton");
+    let sevePosts = JSON.parse(localStorage.getItem("blogPost"))|| [];
     
+    const itemPerPage = 5;
+    let textCurrentPage = 1;
+
+    sevePosts = savePosts.reverse();
+
+    function displayPosts(page){
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const postsToDisplay = savePosts.slice(startIndex,endIndex);
+        
+        blogTextList.innerHTML = ' ';
+
+        postsToDisplay.forEach(post =>{
+            const listItem = document.createElement("li");
+            listItem.textContent = post.content;
+            blogTextList.appendChild(listItem);
+        });
+
+        document.getElementById("textCurrentPage").textContent=`페이지 ${page}`;
+    }
+
+    createTextButton.addEventListener("click",function(){
+        window.location.href= "blog-post.html"
+    });
+
+        document.getElementById("textPrevPage").addEventListener("click",function(){
+            if(textCurrentPage > 1){
+                textCurrentPage --;
+                displayPosts(textCurrentPage);
+            }
+        });
+
+        document.getElementById("textNextPage").addEventListener("click", function(){
+            if(textCurrentPage < Math.ceil(savePosts.length / itemsPerPage)) {
+                textCurrentPage++;
+                displayPosts(textCurrentPage); //다음  페이지로 이동하고 게시물 표시
+            }
+        });
+
+        displayPosts(textCurrentPage);
+    
+
+        function pwmsg(){
+            var pwCheck = document.getElementById("password");
+            var msg = "영문자 대/소문자, 특수문자, 숫자를 포함한 8 ~ 32 자";
+            document.getElementById("pm").textContent = msg;
+        };

@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+}
+
+h1 {
+    padding-top: 100px;
+    text-align: center;
+    color:black;
+    font-size: 25px;
+}
+
+h2 {
+    text-align: center;
+}
+
+header {
+    height:500px;
+    background:white;
+    background-image:url(../img/화이트보드.PNG);
+    border:1px solid;
+    border-radius: 10px;
+    color:rgb(231, 228, 228);
+    
+}
+
+nav ul{
+    
+    list-style-type : none;
+    padding:0;
+}
+
+audio {
+    display: block;
+    margin: 0;
+    max-width: 70%;
+    height: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
+audio::-webkit-media-controls-panel {
+    background-color: #fff;
+    border-radius: 8px;
+}
+audio::-webkit-media-controls-play-button {
+    background-color: #fff;
+    border: 2px solid #f08080;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+nav {
+    float:left;
+    width:30%;
+    height:100%;
+}
+
+article{
+    float:right;
+    width:70%;
+}
+
+section::after {
+    content : "";
+    display : table;
+    clear : both;
+}
+
+footer{
+    text-align: center;
+}

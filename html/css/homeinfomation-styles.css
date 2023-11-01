@@ -2,11 +2,20 @@
     box-sizing: border-box;
 }
 
+#login{
+    margin:20px;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+
+
 audio {
     display: block;
     margin: 0;
-    max-width: 80%;
-    border: 2px solid #8e6565;
+    max-width: 70%;
+    height: 18px;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0, 0.3);
@@ -34,16 +43,24 @@ audio::-webkit-media-controls-play-button {
 .image {
     width: 250px;
     height: 250px;
-    margin:10px;
+    margin:20px;
 }
 
 
 li {
-    padding : 10px;
+    padding : 5px;
     text-align: center;
-    background:linear-gradient(white,gray);
+    background-color: white;
     width:110px;
     font-size : 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin:10px;
+}
+
+h1{
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
 }
 
 .bt {
@@ -85,7 +102,7 @@ nav {
    
     float : left;
     width : 30%;
-    height : 800px;
+    height : 1200px;
     background:rgb(237, 226, 226);
     padding : 5px;
 }
