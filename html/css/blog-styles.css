@@ -15,7 +15,7 @@ h2 {
 
 header {
     height:500px;
-    background:white;
+    background:green;
     background-image:url(../img/화이트보드.PNG);
     border:1px solid;
     border-radius: 10px;
@@ -59,6 +59,7 @@ nav {
 article{
     float:right;
     width:70%;
+    
 }
 
 section::after {
@@ -68,5 +69,38 @@ section::after {
 }
 
 footer{
+    background:rgb(148, 143, 148);
+    text-align: center;
+    color:white;
+}
+
+#login {
     text-align: center;
 }
+
+.img-container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.image {
+    width: 300px;
+    height: 250px;
+    margin:20px;
+}
+
+section {
+    margin-top:20px;
+    background:linear-gradient(45deg,rgb(247, 216, 247),rgb(179, 179, 245));
+}
+
+#prevPage {
+    margin-left: 550px;
+    
+}
+
+#nextPage {
+    margin-left: 100px;
+}
+

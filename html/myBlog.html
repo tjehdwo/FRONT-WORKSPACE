@@ -6,9 +6,9 @@
         <link rel="stylesheet" type="text/css" href="./css/blog-styles.css">
     </head>
     <body>
-        <h2>개발잘하고 싶은 사람 블로그</h2>
+        <h2></h2>
         <header>
-            <h1><img src="./img/ㄳ콩.PNG" style="width:250px; height:250px;"><br>방문 감사콩</h1>
+            <h1><img src="./img/ㄳ콩.PNG" style="width:150px;height: 150px;"><img src="./img/ㅋ로아콘.PNG" style ="width:150px;height:150px";><br>S D J B L O G</h1>
         </header>
         <section>
         <nav>
@@ -26,17 +26,48 @@
             <div>
                 <h1>회원가입</h1>
                 <form id="login">
-                    <label for="username">아이디 : </label>
+                    <label for="username" style="margin-left: 16px;">아이디 : </label>
                     <input type="text" id="username"><br>
-        
+                    
                     <label for="password">비밀번호 : </label>
-                    <input type="password" id="password" onclick="pwmsg()">
+                    <input type="password" id="password"><br><br>
+                    <button>회원가입</button>
+                    </form>
+            </div>
+        </article>
+        <article>
+            <div>
+                <h1>이모티콘 모음</h1>
+                <div id="pagination">
+                    
+                </div>
+                    <div class="img-container">
+                        <!--이미지를 추가하는 공간-->
+                        
+                    </div>
+                <div>
+                    <button id="prevPage">이전</button>
+                    <button id="nextPage">다음</button>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div>
+                <h1>게시글 작성</h1>
+                <div>
+                    <!-- 게시글 작성 공간-->
+                </div>
+
+
             </div>
         </article>
     </section>
     <footer>
-        <p> <a href="https://sdjdevelopment.tistory.com">tistory블로그 바로가기</a>| 개발하는 사람 | 전화 번호:010-6269-6272 </p>
+        <p> <a href="https://sdjdevelopment.tistory.com">tistory블로그 바로가기</a>  |  개발하는 사람  |  전화 번호:010-6269-6272 </p>
     </footer>
+    <script src="../html/js/blog-app.js">
+
+    </script>
        
     </body>
 
