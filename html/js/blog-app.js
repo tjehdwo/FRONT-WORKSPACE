@@ -110,3 +110,9 @@ nextButton.addEventListener('click',() => {
 displayImg(currentPage);
 updateButtons();
 
+$(function(){
+    $("Button").on("click",function(){
+        $("img[alt='one']").attr("src","./img/ㅋ로아콘.png"); 
+    
+    });
+});
